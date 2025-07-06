@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirim Pesan By Dapsz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: white;
+    }
+        header {
+            text-align: center;
+        }
+        form {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: black;
+        }
+        button {
+            background-color: #2900f5;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kirim Pesan</h1>
+    </header>
+    <main>
+        <form id="messageForm">
+            <input style="background: black;" type="text" id="username" placeholder="Isi Username" required>
+            <textarea style="      height: 200px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 14px;
+      font-family: monospace;
+      resize: vertical;
+      box-shadow: inset 0 0 8px #000;" id="message" placeholder="Tulis Pesan" required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </main>
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const message = document.getElementById('message').value;
+            
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push({ username, message });
+            localStorage.setItem('messages', JSON.stringify(messages));
+            
+            document.getElementById('messageForm').reset();
+            alert('Pesan berhasil dikirim!');
+        });
+    </script>
+</body>
+          </html>
+          
