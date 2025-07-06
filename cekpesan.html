@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Pesan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);;;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+        }
+        #messages {
+            background: black;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Cek Pesan</h1>
+    </header>
+    <main>
+        <div id="messages"></div>
+        <a href="index.html">Kembali</a>
+    </main>
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const messages = JSON.parse(localStorage.getItem('messages')) || [];
+        
+        if (messages.length === 0) {
+            messagesDiv.textContent = 'Tidak ada pesan.';
+        } else {
+            messages.forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = `${msg.username}: ${msg.message}`;
+                messagesDiv.appendChild(messageElement);
+            });
+        }
+    </script>
+</body>
+</html>
